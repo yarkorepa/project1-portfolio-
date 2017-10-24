@@ -3,6 +3,16 @@ from .model import ContactForm
 from app import app
 from flask_mail import Message, Mail
 
+app.config.update(dict(
+    DEBUG = True,
+    MAIL_SERVER = 'smtp.gmail.com',
+    MAIL_PORT = 587,
+    MAIL_USE_TLS = True,
+    MAIL_USE_SSL = False,
+    MAIL_USERNAME = 'dreee1998@gmail.com',
+    MAIL_PASSWORD = '(123456)',
+))
+
 mail = Mail()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -14,7 +24,7 @@ def index():
 			flash('All fields are required.')
 			return render_template('contact.html', form=form)
 		else:
-			msg = Message(form.subject.data, sender='hnativ159@gmail.com', recipients=['dreee1998@gmail.com'])
+			msg = Message(form.subject.data, sender='dreee1998@gmail.com', recipients=['dreee1998@gmail.com'])
 			msg.body = """
 			From: %s <%s>
 			%s

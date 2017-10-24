@@ -335,7 +335,7 @@
 
                                     <h4>Leave a message</h4>
                                     <form action="/" method=post>
-                                      {{ form.csrf_token }}
+                                      {{ form.hidden_tag() }}
                                         <div class="form-group">
                                             {{ form.name.label }}
                                             {{ form.name }}
